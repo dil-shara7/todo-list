@@ -134,4 +134,16 @@ public class TaskFlowBackend {
         }
     }
 
+    // Toggle Task Completion
+    @PatchMapping("/tasks/{id}/toggle")
+    public Map<String, Object> toggleTask(@PathVariable int id) {
+        try {
+            jdbc.update("UPDATE tasks SET completed = NOT completed, " +
+                       "progress = CASE WHEN completed THEN 0 ELSE 100 END WHERE id = ?", id);
+            return Map.of("success", true, "message", "Task toggled");
+        } catch (Exception e) {
+            return Map.of("success", false, "message", e.getMessage());
+        }
+    }
+
     
