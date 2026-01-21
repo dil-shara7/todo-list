@@ -109,4 +109,18 @@ public class TaskFlowBackend {
         }
     }
 
+    // Update Task
+    @PutMapping("/tasks/{id}")
+    public Map<String, Object> updateTask(@PathVariable int id, @RequestBody Task task) {
+        try {
+            String sql = "UPDATE tasks SET title = ?, notes = ?, priority = ?, due_date = ?, " +
+                        "link = ?, reminder = ?, progress = ?, completed = ? WHERE id = ?";
+            jdbc.update(sql, task.title, task.notes, task.priority, task.dueDate, 
+                       task.link, task.reminder, task.progress, task.completed, id);
+            return Map.of("success", true, "message", "Task updated");
+        } catch (Exception e) {
+            return Map.of("success", false, "message", e.getMessage());
+        }
+    }
+
     
