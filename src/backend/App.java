@@ -87,4 +87,11 @@ public class TaskFlowBackend {
         }
     }
 
+    // Get All Tasks
+    @GetMapping("/tasks/{userId}")
+    public List<Task> getTasks(@PathVariable int userId) {
+        String sql = "SELECT * FROM tasks WHERE user_id = ? ORDER BY created_at DESC";
+        return jdbc.query(sql, new TaskMapper(), userId);
+    }
+
     
