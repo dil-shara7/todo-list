@@ -146,4 +146,26 @@ public class TaskFlowBackend {
         }
     }
 
+    // Models
+    static class User {
+        public int id;
+        public String email;
+        public String password;
+        public String name;
+    }
+
+    static class Task {
+        public int id;
+        public int userId;
+        public String title;
+        public String notes;
+        public String priority;
+        public String dueDate;
+        public String link;
+        public String reminder;
+        public int progress;
+        public boolean completed;
+        public LocalDateTime createdAt;
+    }
+
     
