@@ -62,4 +62,29 @@ public class TaskFlowBackend {
         }
     }
 
+    // User Login
+    @PostMapping("/login")
+    public Map<String, Object> login(@RequestBody Map<String, String> creds) {
+        try {
+            String email = creds.get("email");
+            String password = creds.get("password");
+            
+            if (email == null || email.isEmpty() || password == null || password.isEmpty()) {
+                return Map.of("success", false, "message", "Email and password are required");
+            }
+            
+            String sql = "SELECT * FROM users WHERE email = ?";
+            User user = jdbc.queryForObject(sql, new UserMapper(), email);
+            
+            if (encoder.matches(password, user.password)) {
+                return Map.of("success", true, "user", Map.of(
+                    "id", user.id, "email", user.email, "name", user.name
+                ));
+            }
+            return Map.of("success", false, "message", "Invalid credentials");
+        } catch (Exception e) {
+            return Map.of("success", false, "message", "User not found");
+        }
+    }
+
     
