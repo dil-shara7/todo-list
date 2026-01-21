@@ -168,4 +168,34 @@ public class TaskFlowBackend {
         public LocalDateTime createdAt;
     }
 
+    // Mappers
+    static class UserMapper implements RowMapper<User> {
+        public User mapRow(ResultSet rs, int row) throws SQLException {
+            User u = new User();
+            u.id = rs.getInt("id");
+            u.email = rs.getString("email");
+            u.password = rs.getString("password");
+            u.name = rs.getString("name");
+            return u;
+        }
+    }
+
+    static class TaskMapper implements RowMapper<Task> {
+        public Task mapRow(ResultSet rs, int row) throws SQLException {
+            Task t = new Task();
+            t.id = rs.getInt("id");
+            t.userId = rs.getInt("user_id");
+            t.title = rs.getString("title");
+            t.notes = rs.getString("notes");
+            t.priority = rs.getString("priority");
+            t.dueDate = rs.getString("due_date");
+            t.link = rs.getString("link");
+            t.reminder = rs.getString("reminder");
+            t.progress = rs.getInt("progress");
+            t.completed = rs.getBoolean("completed");
+            t.createdAt = rs.getTimestamp("created_at").toLocalDateTime();
+            return t;
+        }
+    }
+}
     
