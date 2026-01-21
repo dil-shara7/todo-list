@@ -94,4 +94,19 @@ public class TaskFlowBackend {
         return jdbc.query(sql, new TaskMapper(), userId);
     }
 
+    // Create Task
+    @PostMapping("/tasks")
+    public Map<String, Object> createTask(@RequestBody Task task) {
+        try {
+            String sql = "INSERT INTO tasks (user_id, title, notes, priority, due_date, link, " +
+                        "reminder, progress, completed, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            jdbc.update(sql, task.userId, task.title, task.notes, task.priority, 
+                       task.dueDate, task.link, task.reminder, task.progress, 
+                       task.completed, LocalDateTime.now());
+            return Map.of("success", true, "message", "Task created");
+        } catch (Exception e) {
+            return Map.of("success", false, "message", e.getMessage());
+        }
+    }
+
     
