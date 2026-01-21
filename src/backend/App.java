@@ -123,4 +123,15 @@ public class TaskFlowBackend {
         }
     }
 
+    // Delete Task
+    @DeleteMapping("/tasks/{id}")
+    public Map<String, Object> deleteTask(@PathVariable int id) {
+        try {
+            jdbc.update("DELETE FROM tasks WHERE id = ?", id);
+            return Map.of("success", true, "message", "Task deleted");
+        } catch (Exception e) {
+            return Map.of("success", false, "message", e.getMessage());
+        }
+    }
+
     
