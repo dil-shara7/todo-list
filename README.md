@@ -27,8 +27,7 @@ Responsibilities include:
    ```bash
    git clone https://github.com/dil-shara7/todo-list.git
 
-
-   ## User Guide
+## User Guide 
 
 ## ** Logging In**
 1. Open the app.
