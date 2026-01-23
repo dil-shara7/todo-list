@@ -29,13 +29,13 @@ Responsibilities include:
 
 ## User Guide 
 
-## ** Logging In**
+##  Logging In
 1. Open the app.
 2. Enter your email and password.
 3. Click **Sign In**.
 4. You will be redirected to the main app dashboard.
 
-## ** Creating a Task**
+##  Creating a Task
 1. Click **Add New Task**.
 2. Fill in the task title (required).
 3. Optionally add:
@@ -47,22 +47,22 @@ Responsibilities include:
    - Progress (0-100%)
 4. Click **Add Task*
 
-## ** Managing Tasks**
+##  Managing Tasks
 - **Edit Task:** Click the green **Edit** button, make changes, and save.
 - **Delete Task:** Click the red **Delete** button.
 - **Mark Complete:** Click the checkbox next to the task title.
 
-## ** Filtering Tasks**
+##  Filtering Tasks
 Use the sidebar to filter tasks by:
 - **Status:** All, Active, Completed
 - **Priority:** Low, Medium, High
 - **Due Date:** Today, This Week, Overdue
 
-## ** Notifications**
+##  Notifications
 - Task reminders will appear as popups in the browser.
 - Overdue tasks also trigger notifications.
 
-## ** Tips**
+##  Tips
 - Task data is stored in your browser.
 - Refreshing the page will retain tasks.
 - Enable notifications for timely reminders.
