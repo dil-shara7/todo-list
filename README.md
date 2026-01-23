@@ -1,9 +1,9 @@
-# todo-list System
+# Todo-list System
 
 ## Group Information
-- **Student 1:** Malsha Prabodinee – ITBNM-2313-0058 – Role: Frontend Developer  
-- **Student 2:** A.R.D.T Wickramanayaka – ITBNM-2313-0084 – Role: Backend Developer  
-- **Student 3:** Dilshara Dias – ITBNM-2313-0015 – Role: DevOps & Testing  
+- **Student 1:**R.G Malsha Prabodini – ITBNM-2313-0058 –  Frontend Developer  
+- **Student 2:**A.R.D.T Wickramanayaka – ITBNM-2313-0084 –  Backend Developer  
+- **Student 3:**A.A.M Dilshara Dias – ITBNM-2313-0015 –  DevOps & Testing  
 
 ## Project Description
 TaskFlow is a task management web application that helps users create, organize, and track daily tasks. Users can add tasks, set priorities, update progress, and manage their work efficiently.
@@ -29,19 +29,22 @@ We implemented the following branching strategy:
 
 - `main` - Production branch  
 - `develop` - Integration branch  
-- `feature/*` - Feature development branches  
+- `feature/malsha` - Frontend Developer
+- `feature/dulara` - Backend Developer
+- `feature/dilshara` - Devops Manager
 
 ## Individual Contributions
-### Malsha Prabodinee
+
+### R.G Malsha Prabodini- ITBNM-2313-0058
 - Repository setup  
 - Frontend design (HTML, CSS, JS)  
 - Task filtering and reminder logic  
 
-### A.R.D.T Wickramanayaka
+### A.R.D.T Wickramanayaka- ITBNM-2313-0084
 - Backend API development  
 - User authentication  
 
-### Dilshara Dias
+### A.A.M Dilshara Dias- ITBNM-2313-0015
 - CI/CD pipeline setup  
 - Deployment  
 - Testing  
