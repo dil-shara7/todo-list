@@ -20,14 +20,14 @@ Responsibilities include:
 - HTML, CSS, JavaScript 
 - LocalStorage for data persistence
 - Google Fonts for typography
-- Responsive design with CSS Grid & Flexbox
+- Responsive design with CSS
 
 ## **Setup Instructions**
 1. Clone the repository:
    ```bash
    git clone https://github.com/dil-shara7/todo-list.git
 
-## User Guide 
+# User Guide 
 
 ##  Logging In
 1. Open the app.
