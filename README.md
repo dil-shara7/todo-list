@@ -29,7 +29,7 @@ Responsibilities include:
 
 ##  Creating a Task
 1. Click **Add New Task**.
-2. Fill in the task title (required).
+2. Fill in the task title.
 3. Optionally add:
    - Notes or description
    - Priority (Low, Medium, High)
