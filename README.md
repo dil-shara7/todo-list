@@ -1,13 +1,5 @@
 # Todo-list System - User Documentation
 
-## Project Overview
-TaskFlow is a web-based task management app that allows users to:
-- Create tasks with priorities, due dates, notes, attachments, and links
-- Track task progress
-- Set reminders for upcoming or overdue tasks
-- Filter tasks by status, priority, and due date
-- Edit and delete tasks easily
-
 ## **Frontend Developer Role**
 Responsibilities include:
 - UI/UX implementation
