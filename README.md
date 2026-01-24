@@ -66,8 +66,8 @@ We implemented the following branching strategy:
 
 ## Setup Instructions
 ### Prerequisites
-- Web Browser (Chrome, Edge, Firefox)
-- Git (optional, for cloning)
+- Web Browser 
+- Git 
 
 ### Installation
 # Clone the repository
