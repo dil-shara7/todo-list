@@ -1,12 +1,20 @@
 # Todo-list System
 
 ## Group Information
-- **Student 1:**R.G Malsha Prabodini – ITBNM-2313-0058 –  Frontend Developer  
-- **Student 2:**A.R.D.T Wickramanayaka – ITBNM-2313-0084 –  Backend Developer  
-- **Student 3:**A.A.M Dilshara Dias – ITBNM-2313-0015 –  DevOps & Testing  
+- **Student 1:** R.G Malsha Prabodini – ITBNM-2313-0058 –  Frontend Developer  
+- **Student 2:** A.R.D.T Wickramanayaka – ITBNM-2313-0084 –  Backend Developer  
+- **Student 3:** A.A.M Dilshara Dias – ITBNM-2313-0015 –  DevOps & Testing  
 
 ## Project Description
 TaskFlow is a task management web application that helps users create, organize, and track daily tasks. Users can add tasks, set priorities, update progress, and manage their work efficiently.
+
+## Project Overview
+TaskFlow is a web-based task management app that allows users to:
+- Create tasks with priorities, due dates, notes, attachments, and links
+- Track task progress
+- Set reminders for upcoming or overdue tasks
+- Filter tasks by status, priority, and due date
+- Edit and delete tasks easily
 
 ## Live Deployment
 **Live URL:** http://dil-shara7.github.io/todo-list/
@@ -47,7 +55,13 @@ We implemented the following branching strategy:
 ### A.A.M Dilshara Dias- ITBNM-2313-0015
 - CI/CD pipeline setup  
 - Deployment  
-- Testing  
+- Testing
+
+## Future Enhancements
+- User authentication
+- Cloud database integration
+- Task reminders via email
+- Mobile responsive improvements  
 
 ## Setup Instructions
 ### Prerequisites
@@ -61,6 +75,17 @@ git clone  https://github.com/dil-shara7/todo-list.git
 # Navigate to project folder
 cd todo-list
 
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+
+## Learning Outcomes
+- Practiced Git branching strategies
+- Implemented CI/CD using GitHub Actions
+- Gained experience in collaborative development
+  
 ## Challenges Faced
 - Connecting frontend with backend  
 - Fixing CORS errors  
