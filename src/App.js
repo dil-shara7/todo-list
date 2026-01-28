@@ -47,3 +47,20 @@ app.get('/api/todos', (req, res) => {
     data: todos
   });
 });
+
+// Get single todo
+app.get('/api/todos/:id', (req, res) => {
+  const todo = todos.find(t => t.id === parseInt(req.params.id));
+  
+  if (!todo) {
+    return res.status(404).json({
+      success: false,
+      message: 'Todo not found'
+    });
+  }
+  
+  res.json({
+    success: true,
+    data: todo
+  });
+});
