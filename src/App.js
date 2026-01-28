@@ -92,3 +92,43 @@ app.post('/api/todos', (req, res) => {
     data: newTodo
   });
 });
+
+// Update todo
+app.put('/api/todos/:id', (req, res) => {
+  const todoIndex = todos.findIndex(t => t.id === parseInt(req.params.id));
+  
+  if (todoIndex === -1) {
+    return res.status(404).json({
+      success: false,
+      message: 'Todo not found'
+    });
+  }
+  
+  const { title, description, completed } = req.body;
+  
+  if (title !== undefined) {
+    if (title.trim() === '') {
+      return res.status(400).json({
+        success: false,
+        message: 'Title cannot be empty'
+      });
+    }
+    todos[todoIndex].title = title.trim();
+  }
+  
+  if (description !== undefined) {
+    todos[todoIndex].description = description.trim();
+  }
+  
+  if (completed !== undefined) {
+    todos[todoIndex].completed = Boolean(completed);
+  }
+  
+  todos[todoIndex].updatedAt = new Date().toISOString();
+  
+  res.json({
+    success: true,
+    message: 'Todo updated successfully',
+    data: todos[todoIndex]
+  });
+});
