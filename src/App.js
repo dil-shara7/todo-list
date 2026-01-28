@@ -132,3 +132,24 @@ app.put('/api/todos/:id', (req, res) => {
     data: todos[todoIndex]
   });
 });
+
+// Toggle todo completion status
+app.patch('/api/todos/:id/toggle', (req, res) => {
+  const todoIndex = todos.findIndex(t => t.id === parseInt(req.params.id));
+  
+  if (todoIndex === -1) {
+    return res.status(404).json({
+      success: false,
+      message: 'Todo not found'
+    });
+  }
+  
+  todos[todoIndex].completed = !todos[todoIndex].completed;
+  todos[todoIndex].updatedAt = new Date().toISOString();
+  
+  res.json({
+    success: true,
+    message: 'Todo toggled successfully',
+    data: todos[todoIndex]
+  });
+});
