@@ -153,3 +153,23 @@ app.patch('/api/todos/:id/toggle', (req, res) => {
     data: todos[todoIndex]
   });
 });
+
+// Delete todo
+app.delete('/api/todos/:id', (req, res) => {
+  const todoIndex = todos.findIndex(t => t.id === parseInt(req.params.id));
+  
+  if (todoIndex === -1) {
+    return res.status(404).json({
+      success: false,
+      message: 'Todo not found'
+    });
+  }
+  
+  const deletedTodo = todos.splice(todoIndex, 1)[0];
+  
+  res.json({
+    success: true,
+    message: 'Todo deleted successfully',
+    data: deletedTodo
+  });
+});
