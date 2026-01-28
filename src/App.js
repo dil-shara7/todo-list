@@ -38,3 +38,12 @@ app.get('/', (req, res) => {
     }
   });
 });
+
+// Get all todos
+app.get('/api/todos', (req, res) => {
+  res.json({
+    success: true,
+    count: todos.length,
+    data: todos
+  });
+});
