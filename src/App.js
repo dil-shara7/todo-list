@@ -64,3 +64,31 @@ app.get('/api/todos/:id', (req, res) => {
     data: todo
   });
 });
+
+// Create new todo
+app.post('/api/todos', (req, res) => {
+  const { title, description } = req.body;
+  
+  if (!title || title.trim() === '') {
+    return res.status(400).json({
+      success: false,
+      message: 'Title is required'
+    });
+  }
+  
+  const newTodo = {
+    id: nextId++,
+    title: title.trim(),
+    description: description?.trim() || '',
+    completed: false,
+    createdAt: new Date().toISOString()
+  };
+  
+  todos.push(newTodo);
+  
+  res.status(201).json({
+    success: true,
+    message: 'Todo created successfully',
+    data: newTodo
+  });
+});
