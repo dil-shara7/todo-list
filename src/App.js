@@ -20,3 +20,21 @@ let todos = [
 ];
 
 let nextId = 2;
+
+// Routes
+
+// Health check
+app.get('/', (req, res) => {
+  res.json({ 
+    status: 'OK', 
+    message: 'Todo API is running',
+    endpoints: {
+      getTodos: 'GET /api/todos',
+      getTodo: 'GET /api/todos/:id',
+      createTodo: 'POST /api/todos',
+      updateTodo: 'PUT /api/todos/:id',
+      deleteTodo: 'DELETE /api/todos/:id',
+      toggleTodo: 'PATCH /api/todos/:id/toggle'
+    }
+  });
+});
