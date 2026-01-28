@@ -173,3 +173,17 @@ app.delete('/api/todos/:id', (req, res) => {
     data: deletedTodo
   });
 });
+
+// Delete all todos
+app.delete('/api/todos', (req, res) => {
+  const count = todos.length;
+  todos = [];
+  nextId = 1;
+  
+  res.json({
+    success: true,
+    message: `Deleted ${count} todos`,
+    data: { deletedCount: count }
+  });
+});
+
