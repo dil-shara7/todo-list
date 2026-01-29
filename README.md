@@ -17,7 +17,7 @@ TaskFlow is a web-based task management app that allows users to:
 - Edit and delete tasks easily
 
 ## Live Deployment
-**Live URL:** http://dil-shara7.github.io/todo-list/
+**Live URL:**[ http://dil-shara7.github.io/todo-list/](https://todo-list-rho-seven-68.vercel.app/)
 
 ## Technologies Used
 - HTML5, CSS3, JavaScript  
