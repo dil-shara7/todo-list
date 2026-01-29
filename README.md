@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Todo-list System
 
 ## Group Information
