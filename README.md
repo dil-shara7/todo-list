@@ -91,7 +91,7 @@ npm run dev
 - Fixing CORS errors  
 - Making UI responsive  
 
-=======
+
 #  Todo-list Backend API
 
 Backend service for the **Todo-list System**, built using **Spring Boot**, **JDBC**, and **MySQL**.  
@@ -107,7 +107,6 @@ Todo-list Backend handles:
 - Task progress tracking
 - Task completion toggling
 - Database interaction using JDBC
-
 
 
 ##  Technologies Used
@@ -316,7 +315,4 @@ http://localhost:8080
 
 
 
-##  Author
 
-T0d0-list Backend developed for learning full-stack task management systems using Spring Boot.
->>>>>>> develop
