@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -7,6 +8,12 @@ const PORT = process.env.PORT || 3001;
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+
+app.use(express.static(__dirname));
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 // In-memory storage for todos
 let todos = [
@@ -24,7 +31,7 @@ let nextId = 2;
 // Routes
 
 // Health check
-app.get('/', (req, res) => {
+app.get('/status', (req, res) => {
   res.json({ 
     status: 'OK', 
     message: 'Todo API is running',

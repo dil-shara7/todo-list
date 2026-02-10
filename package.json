@@ -1,0 +1,26 @@
+{
+  "name": "todo-list",
+  "version": "1.0.0",
+  "description": "- **Student 1:** R.G Malsha Prabodini – ITBNM-2313-0058 –  Frontend Developer  \r - **Student 2:** A.R.D.T Wickramanayaka – ITBNM-2313-0084 –  Backend Developer  \r - **Student 3:** A.A.M Dilshara Dias – ITBNM-2313-0015 –  DevOps & Testing",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/App.js",
+    "dev": "nodemon src/App.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dil-shara7/todo-list.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dil-shara7/todo-list/issues"
+  },
+  "homepage": "https://github.com/dil-shara7/todo-list#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1"
+  }
+}
