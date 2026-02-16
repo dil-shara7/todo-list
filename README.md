@@ -1,4 +1,6 @@
 # Todo-list System
+![CI Pipeline](https://github.com/dil-shara7/todo-list/actions/workflows/ci.yml/badge.svg)
+![Deploy Status](https://github.com/dil-shara7/todo-list/actions/workflows/deploy.yml/badge.svg)
 
 ## Group Information
 - **Student 1:** R.G Malsha Prabodini – ITBNM-2313-0058 –  Frontend Developer  
