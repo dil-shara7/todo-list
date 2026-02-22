@@ -1,14 +1,70 @@
+# Docker Compose file for the TaskFlow Todo application
+# It runs a single Node.js container that serves the API and frontend
 version: '3.8'
+
 services:
+  # Main application service
   todo-app:
-    build: .
+    # Build the image using the Dockerfile in this folder
+    build:
+      context: .
+      dockerfile: Dockerfile
+      # Use only the production stage from the Dockerfile
+      target: production
+
+    # Easy-to-read name for the running container
+    container_name: todo-app
+
+    # Restart the container automatically if it crashes
+    restart: unless-stopped
+
+    # Map host port to container port
+    # Default host port is 3001 if APP_PORT is not set
     ports:
-      - "3001:3001"
+      - "${APP_PORT:-3001}:3001"
+
+    # Environment variables passed to the app
     environment:
-      - NODE_ENV=production
-    #health checks
+      # Tells Node.js to run in production mode
+      - NODE_ENV=${NODE_ENV:-production}
+      # Port the Express app listens on
+      - PORT=3001
+
+    # Store logs in a Docker-managed volume
+    # Logs stay even if the container is restarted
+    volumes:
+      - todo-logs:/app/logs
+
+    # Check if the app is running and responding
+    # Docker uses this to mark the container as healthy
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3001"]
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3001/status"]
       interval: 30s
       timeout: 10s
       retries: 3
+      start_period: 15s
+
+    # Connect the container to a custom network
+    networks:
+      - taskflow-network
+
+    # Limit CPU and memory usage
+    # Prevents the app from using too many system resources
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+        reservations:
+          cpus: '0.1'
+          memory: 64M
+
+# Named volume to store application logs
+volumes:
+  todo-logs:
+    driver: local
+
+# Custom bridge network for isolation and internal communication
+networks:
+  taskflow-network:
+    driver: bridge
