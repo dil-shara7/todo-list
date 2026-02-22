@@ -212,12 +212,10 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Start server (only if not in Vercel)
-if (process.env.NODE_ENV !== 'production') {
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-  });
-}
+// Start server
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
 // Export for Vercel
 module.exports = app;
