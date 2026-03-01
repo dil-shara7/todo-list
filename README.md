@@ -74,27 +74,27 @@ We implemented the following branching strategy:
 - Git
 - Docker Desktop (https://www.docker.com/products/docker-desktop/)
 
-### Clone the Repository
+### Step 1 - Clone the Repository
 
 ```bash
 git clone https://github.com/dil-shara7/todo-list.git
 cd todo-list
 ```
 
-### Step 2 — Configure Environment 
+### Step 2 - Configure Environment 
 
 ```.env
 NODE_ENV=production
 APP_PORT=3001
 ```
 
-### Step 3 — Build and Start the Container
+### Step 3 - Build and Start the Container
 
 ```bash
 docker compose up --build
 ```
 
-### Step 4 — Verify the App is Running
+### Step 4 - Verify the App is Running
 
 Open your browser and go to:
 
@@ -110,7 +110,7 @@ The health check endpoint will return:
 }
 ```
 
-### Step 5 — Stop the Container
+### Step 5 - Stop the Container
 
 ```bash
 docker compose down
