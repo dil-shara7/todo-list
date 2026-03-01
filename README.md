@@ -76,7 +76,6 @@ We implemented the following branching strategy:
 
 ### Step 1 — Clone the Repository
 
-bash
 git clone https://github.com/dil-shara7/todo-list.git
 cd todo-list
 
