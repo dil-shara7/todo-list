@@ -22,16 +22,19 @@ TaskFlow is a web-based task management app that allows users to:
 **Live URL:**[ http://dil-shara7.github.io/todo-list/](https://todo-list-rho-seven-68.vercel.app/)
 
 ## Technologies Used
-- HTML5, CSS3, JavaScript  
-- Spring Boot (Java)  
-- GitHub Actions  
-- Vercel
+- *Frontend:* HTML5, CSS3, Vanilla JavaScript
+- *Backend:* Node.js, Express.js
+- *Containerisation:* Docker, Docker Compose
+- *CI/CD:* GitHub Actions
+- *Hosting:* Vercel
   
 ## Features
-- Add, edit, and delete tasks  
-- Set task priority and due dates  
-- Track task progress  
-- Filter tasks
+- Add, edit, and delete tasks
+- Set task priority (High / Medium / Low)
+- Due dates and reminder settings
+- Progress tracking (0–100%)
+- Filter tasks by status, priority, and due date
+- In-memory REST API backend
 
 ## Branch Strategy
 
@@ -68,20 +71,149 @@ We implemented the following branching strategy:
 ## Setup Instructions
 ### Prerequisites
 - Web Browser 
-- Git 
+- Git
+- Docker Desktop (https://www.docker.com/products/docker-desktop/)
+
+### Step 1 — Clone the Repository
+
+bash
+git clone https://github.com/dil-shara7/todo-list.git
+cd todo-list
+
+### Step 2 — Configure Environment 
+
+bash
+# .env (optional — copy and edit as needed)
+NODE_ENV=production
+APP_PORT=3001
+
+### Step 3 — Build and Start the Container
+
+bash
+docker compose up --build
+
+### Step 4 — Verify the App is Running
+
+Open your browser and go to:
+- *App:* [http://localhost:3001](http://localhost:3001)
+- *Health Check:* [http://localhost:3001/status](http://localhost:3001/status)
+
+The health check endpoint will return:
+json
+{
+  "status": "OK",
+  "message": "Todo API is running"
+}
+
+### Step 5 — Stop the Container
+
+bash
+docker compose down
+
+
+## Running Without Docker (Local Development)
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) v18 or higher
+- [npm](https://www.npmjs.com/) v8 or higher
 
 ### Installation
-# Clone the repository
-git clone  https://github.com/dil-shara7/todo-list.git
 
-# Navigate to project folder
+bash
+# Clone the repository
+git clone https://github.com/dil-shara7/todo-list.git
 cd todo-list
 
 # Install dependencies
 npm install
 
-# Run development server
+# Run development server (with auto-restart via nodemon)
 npm run dev
+
+# OR run production server
+npm start
+
+
+The app will be available at [http://localhost:3001](http://localhost:3001)
+
+
+## Docker Architecture
+
+This project uses a *multi-stage Docker build* to optimise the final image:
+
+| Stage | Base Image | Purpose |
+|-------|-----------|---------|
+| builder | node:18-alpine | Install production dependencies |
+| production | node:18-alpine | Run the application |
+
+
+### Security Decisions
+- *Non-root user:* The container runs as appuser, not root
+- *Alpine Linux:* Minimal base image with a smaller attack surface
+- *No secrets in image:* Environment variables are injected at runtime
+- *Health checks:* Docker monitors the /status endpoint every 30 seconds
+
+  
+## Useful Docker Commands
+
+bash
+# Build image only (without starting)
+docker build -t taskflow-todo .
+
+# Start in detached (background) mode
+docker compose up -d --build
+
+# View live logs
+docker compose logs -f
+
+# Check container health status
+docker ps
+
+# Open a shell inside the running container (for debugging)
+docker exec -it taskflow-todo-app sh
+
+# Remove containers and volumes
+docker compose down -v
+
+
+## API Endpoints
+
+Base URL: http://localhost:3001/api
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | /status | Health check |
+| GET | /api/todos | Get all todos |
+| GET | /api/todos/:id | Get single todo |
+| POST | /api/todos | Create new todo |
+| PUT | /api/todos/:id | Update todo |
+| PATCH | /api/todos/:id/toggle | Toggle completion |
+| DELETE | /api/todos/:id | Delete todo |
+| DELETE | /api/todos | Delete all todos |
+
+
+## Troubleshooting
+
+*Port already in use:*
+bash
+# Change the port in .env
+APP_PORT=3002
+docker compose up --build
+
+
+*Container not starting:*
+bash
+# Check logs for errors
+docker compose logs todo-app
+
+
+*Permission issues:*
+bash
+# Rebuild from scratch
+docker compose down -v
+docker compose up --build
+
 
 ## Learning Outcomes
 - Practiced Git branching strategies
@@ -92,229 +224,6 @@ npm run dev
 - Connecting frontend with backend  
 - Fixing CORS errors  
 - Making UI responsive  
-
-
-#  Todo-list Backend API
-
-Backend service for the **Todo-list System**, built using **Spring Boot**, **JDBC**, and **MySQL**.  
-It provides REST APIs for **user authentication** and **task management**.
-
-
-##  Project Overview
-
-Todo-list Backend handles:
-
-- User registration & login (with encrypted passwords)
-- Task creation, update, deletion
-- Task progress tracking
-- Task completion toggling
-- Database interaction using JDBC
-
-
-##  Technologies Used
-
-- Java
-- Spring Boot
-- Spring Web (REST APIs)
-- Spring JDBC
-- Spring Security Crypto (BCrypt Password Encryption)
-- MySQL (or other SQL database)
-- Maven
-
-
-##  Backend Features
-
-###  User Features
-- Register new users
-- Secure login using encrypted passwords (BCrypt)
-
-###  Task Features
-- Create tasks
-- View all tasks for a user
-- Update tasks
-- Delete tasks
-- Toggle task completion
-- Track task progress
-
-
-##  Security
-
-- Passwords are encrypted using **BCryptPasswordEncoder**
-- Raw passwords are **never stored** in the database
-
-
-
-##  CORS Configuration
-
-Backend allows cross-origin requests:
-
-```java
-registry.addMapping("/api/**")
-        .allowedOrigins("*")
-        .allowedMethods("*");
-```
-
-This enables frontend applications to connect to the backend.
-
-
-
-##  Database Structure
-
-### Users Table
-
-| Column   | Type      | Description         |
-|----------|-----------|---------------------|
-| id       | INT (PK)  | User ID             |
-| email    | VARCHAR   | User email          |
-| password | VARCHAR   | Encrypted password  |
-| name     | VARCHAR   | User name           |
-
-
-
-### Tasks Table
-
-| Column      | Type      | Description            |
-|-------------|-----------|------------------------|
-| id          | INT (PK)  | Task ID                |
-| user_id     | INT (FK)  | Owner of task          |
-| title       | VARCHAR   | Task title             |
-| notes       | TEXT      | Task notes             |
-| priority    | VARCHAR   | Task priority          |
-| due_date    | VARCHAR   | Due date               |
-| link        | VARCHAR   | Related link           |
-| reminder    | VARCHAR   | Reminder time          |
-| progress    | INT       | Task progress (0–100)  |
-| completed   | BOOLEAN   | Task completion status |
-| created_at  | DATETIME  | Creation time          |
-
-
-
-## API Endpoints
-
-**Base URL**
-```
-http://localhost:8080/api
-```
-
-
-
-###  Register User
-
-**POST** `/register`
-
-**Request Body**
-```json
-{
-  "email": "user@example.com",
-  "password": "123456"
-}
-```
-
-**Response**
-```json
-{
-  "success": true,
-  "message": "User registered"
-}
-```
-
-
-
-###  Login User
-
-**POST** `/login`
-
-**Request Body**
-```json
-{
-  "email": "user@example.com",
-  "password": "123456"
-}
-```
-
-**Response**
-```json
-{
-  "success": true,
-  "user": {
-    "id": 1,
-    "email": "user@example.com",
-    "name": "user"
-  }
-}
-```
-
-
-
-###  Get All Tasks
-
-**GET** `/tasks/{userId}`
-
-Example:
-```
-GET /tasks/1
-```
-
-
-
-###  Create Task
-
-**POST** `/tasks`
-
-```json
-{
-  "userId": 1,
-  "title": "Complete Assignment",
-  "notes": "Finish backend documentation",
-  "priority": "High",
-  "dueDate": "2026-01-30",
-  "link": "",
-  "reminder": "09:00",
-  "progress": 0,
-  "completed": false
-}
-```
-
-
-
-###  Update Task
-
-**PUT** `/tasks/{id}`
-
-
-
-###  Delete Task
-
-**DELETE** `/tasks/{id}`
-
-
-
-###  Toggle Task Completion
-
-**PATCH** `/tasks/{id}/toggle`
-
-Automatically:
-- Marks task as completed/not completed
-- Sets progress to **0 or 100**
-
-
-
-##  Running the Backend
-
-1. Clone project  
-2. Configure database in `application.properties`  
-3. Run:
-
-```bash
-mvn spring-boot:run
-```
-
-Server starts at:
-
-```
-http://localhost:8080
-```
-
 
 
 
