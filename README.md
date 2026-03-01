@@ -76,38 +76,45 @@ We implemented the following branching strategy:
 
 ### Clone the Repository
 
+```bash
 git clone https://github.com/dil-shara7/todo-list.git
 cd todo-list
+```
 
 ### Step 2 — Configure Environment 
 
-bash
-.env (optional — copy and edit as needed)
+```.env
 NODE_ENV=production
 APP_PORT=3001
+```
 
 ### Step 3 — Build and Start the Container
 
-bash
+```bash
 docker compose up --build
+```
 
 ### Step 4 — Verify the App is Running
 
 Open your browser and go to:
-- App: [http://localhost:3001](http://localhost:3001)
-- Health Check: [http://localhost:3001/status](http://localhost:3001/status)
+
+- **App:** http://localhost:3001  
+- **Health Check:** http://localhost:3001/status  
 
 The health check endpoint will return:
-json
+
+```json
 {
   "status": "OK",
   "message": "Todo API is running"
 }
+```
 
 ### Step 5 — Stop the Container
 
-bash
+```bash
 docker compose down
+```
 
 
 ## Running Without Docker (Local Development)
@@ -119,7 +126,7 @@ docker compose down
 
 ### Installation
 
-bash
+```bash
 # Clone the repository
 git clone https://github.com/dil-shara7/todo-list.git
 cd todo-list
@@ -132,14 +139,15 @@ npm run dev
 
 # OR run production server
 npm start
+```
 
-
-The app will be available at [http://localhost:3001](http://localhost:3001)
+The app will be available at:
+`http://localhost:3001`
 
 
 ## Docker Architecture
 
-This project uses a *multi-stage Docker build* to optimise the final image:
+This project uses a **multi-stage Docker build** to optimise the final image:
 
 | Stage | Base Image | Purpose |
 |-------|-----------|---------|
@@ -148,15 +156,16 @@ This project uses a *multi-stage Docker build* to optimise the final image:
 
 
 ### Security Decisions
-- *Non-root user:* The container runs as appuser, not root
-- *Alpine Linux:* Minimal base image with a smaller attack surface
-- *No secrets in image:* Environment variables are injected at runtime
-- *Health checks:* Docker monitors the /status endpoint every 30 seconds
+
+- **Non-root user:** The container runs as `appuser`, not root  
+- **Alpine Linux:** Minimal base image with smaller attack surface  
+- **No secrets in image:** Environment variables injected at runtime  
+- **Health checks:** Docker monitors the `/status` endpoint every 30 seconds  
 
   
 ## Useful Docker Commands
 
-bash
+```bash
 # Build image only (without starting)
 docker build -t taskflow-todo .
 
@@ -174,44 +183,54 @@ docker exec -it taskflow-todo-app sh
 
 # Remove containers and volumes
 docker compose down -v
+```
 
 
 ## API Endpoints
 
-Base URL: http://localhost:3001/api
+Base URL:
+
+`http://localhost:3001/api`
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| GET | /status | Health check |
-| GET | /api/todos | Get all todos |
-| GET | /api/todos/:id | Get single todo |
-| POST | /api/todos | Create new todo |
-| PUT | /api/todos/:id | Update todo |
-| PATCH | /api/todos/:id/toggle | Toggle completion |
+| GET    | /status | Health check |
+| GET    | /api/todos | Get all todos |
+| GET    | /api/todos/:id | Get single todo |
+| POST   | /api/todos | Create new todo |
+| PUT    | /api/todos/:id | Update todo |
+| PATCH  | /api/todos/:id/toggle | Toggle completion |
 | DELETE | /api/todos/:id | Delete todo |
 | DELETE | /api/todos | Delete all todos |
 
 
 ## Troubleshooting
+### Port already in use
 
-*Port already in use:*
-bash
+```bash
 # Change the port in .env
 APP_PORT=3002
 docker compose up --build
+```
 
+---
 
-*Container not starting:*
-bash
+### Container not starting
+
+```bash
 # Check logs for errors
 docker compose logs todo-app
+```
 
+---
 
-*Permission issues:*
-bash
+### Permission issues
+
+```bash
 # Rebuild from scratch
 docker compose down -v
 docker compose up --build
+```
 
 
 ## Learning Outcomes
