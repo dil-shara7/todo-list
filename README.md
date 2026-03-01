@@ -83,7 +83,7 @@ cd todo-list
 ### Step 2 — Configure Environment 
 
 bash
-# .env (optional — copy and edit as needed)
+.env (optional — copy and edit as needed)
 NODE_ENV=production
 APP_PORT=3001
 
@@ -95,8 +95,8 @@ docker compose up --build
 ### Step 4 — Verify the App is Running
 
 Open your browser and go to:
-- *App:* [http://localhost:3001](http://localhost:3001)
-- *Health Check:* [http://localhost:3001/status](http://localhost:3001/status)
+- App: [http://localhost:3001](http://localhost:3001)
+- Health Check: [http://localhost:3001/status](http://localhost:3001/status)
 
 The health check endpoint will return:
 json
