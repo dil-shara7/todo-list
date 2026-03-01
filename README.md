@@ -74,7 +74,7 @@ We implemented the following branching strategy:
 - Git
 - Docker Desktop (https://www.docker.com/products/docker-desktop/)
 
-### Step 1 — Clone the Repository
+### Clone the Repository
 
 git clone https://github.com/dil-shara7/todo-list.git
 cd todo-list
