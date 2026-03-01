@@ -213,7 +213,6 @@ APP_PORT=3002
 docker compose up --build
 ```
 
----
 
 ### Container not starting
 
@@ -222,7 +221,6 @@ docker compose up --build
 docker compose logs todo-app
 ```
 
----
 
 ### Permission issues
 
