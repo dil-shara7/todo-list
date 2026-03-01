@@ -235,11 +235,14 @@ docker compose up --build
 - Practiced Git branching strategies
 - Implemented CI/CD using GitHub Actions
 - Gained experience in collaborative development
+- Docker & Containerization
   
 ## Challenges Faced
 - Connecting frontend with backend  
 - Fixing CORS errors  
-- Making UI responsive  
+- Making UI responsive
+- Managing Docker Configuration
+- API Error Handling
 
 
 
